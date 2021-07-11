@@ -2,9 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import Tachyons from 'tachyons';
+import {robots} from './Robots.js';
+import CardList from './cardList.js';
 
 ReactDOM.render(
-("hello"),
+	<CardList robots={robots} />
+	,
   document.getElementById('root')
 );
 
