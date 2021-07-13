@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {robots} from './Robots.js';
 import CardList from './cardList.js';
 import Searchbox from './Searchbox.js';
+import './app.css';
 class App extends Component  {
 	constructor(){
 		super();
@@ -11,7 +12,7 @@ class App extends Component  {
 
 		}
 	}
-
+	
 	oSearch = (event) => {
 		this.setState({ searchfeild: event.target.value})
 
