@@ -2,7 +2,12 @@
   font-family: 'SEGA LOGO FONT';
   src:local('SEGA LOGO FONT')  url('SEGA.TTF') format('ttf');
 }
-		
+
+html{
+  height: 100%;
+  position: relative;
+  
+}		
 
 h1{
 	font-family: 'SEGA LOGO FONT';
@@ -10,4 +15,16 @@ h1{
 	color: #E4E9EF;
 
 
+}
+
+
+h2{
+	font-size: 2em;
+}
+button {     
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;       
 }

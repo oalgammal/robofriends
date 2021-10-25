@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
-// import {robots} from './Robots.js';
-import CardList from '../components/cardList.js';
+import Cardlist from '../components/Cardlist.js';
 import Searchbox from '../components/Searchbox.js';
 import Scroll from '../components/scroll.js';
 import './app.css';
@@ -8,36 +7,53 @@ class App extends Component  {
 	constructor(){
 		super();
 		this.state={
-			robots: [],
-			searchfeild: ''
+			robots:[] ,
+			searchfeild1: '',
+			searchfeild2:'',
 
 		}
 	}
 	componentDidMount(){
-		fetch('https://jsonplaceholder.typicode.com/users')
+		fetch('https://api.hatchways.io/assessment/students')
 		.then(response=> response.json())
-		.then(users=>this.setState({robots: users}))
+		.then(data=>{
+			let temp = data.students
+			var emptyTag = []
+			temp.forEach(robot=>robot.tags=emptyTag)
+			this.setState({robots:temp})
+			}
+		)
 		
 	} 
+
 	
 	oSearch = (event) => {
-		this.setState({ searchfeild: event.target.value})
+		this.setState({ searchfeild1: event.target.value})
+		event.preventDefault();
 
 	}
 
+	oSearch2 = (event) => {
+		this.setState({ searchfeild2: event.target.value})
+		event.preventDefault();
+	
+	}
+
+
 	render(){
-		const filterRobots = this.state.robots.filter(robots => {
-			return robots.name.toLowerCase().includes(this.state.searchfeild.toLowerCase())
-		})
+		
 		return(
 				<div className='tc'>
-					<h1>Robofriends</h1>
-					<Searchbox searchChange={this.oSearch} /> 
+					<h1>students</h1>
+					<Searchbox searchChange={this.oSearch} searchChange2={this.oSearch2} /> 
 					<Scroll>
-						<CardList robots={filterRobots}/>
+						<Cardlist searchfeild2={this.state.searchfeild2} searchfeild1={this.state.searchfeild1} robots={this.state.robots}/>
 					</Scroll>
 				</div>
 			)
+	}
+	componentDidUpdate(){
+		window.scrollTo(0, 0)
 	}
 }
 export default App;
